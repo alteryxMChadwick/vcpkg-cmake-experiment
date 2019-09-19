@@ -5,7 +5,9 @@ CMAKE_DIR=$SCRIPTPATH/build-dir/linux/cmake
 mkdir -p $CMAKE_DIR
 cd $CMAKE_DIR
 
-VCPKG_ROOT=/w/vcpkg
+# find vcpkg in $PATH
+#   if vcpkg is not in $PATH, then the cmake script will download and install vcpkg
+VCPKG_ROOT="$( dirname "$( which vcpkg )" )"
 
 cmake -G "Unix Makefiles" $SCRIPTPATH \
     -DAUTO_VCPKG_ROOT=$VCPKG_ROOT \
